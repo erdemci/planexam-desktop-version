@@ -1,0 +1,66 @@
+<div id="examList" class="animated">
+    <md-toolbar class="md-whiteframe-1dp">
+        <div class="md-toolbar-tools">
+            <div class="md-title">Oturum Listesi</div>
+        </div>
+    </md-toolbar>
+    <md-content layout="column">
+        <md-card>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Oturum Tarihi</th>
+                        <th>Ders Saati</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody ng-init="selectedIndex=-1">
+                    <tr ng-repeat="session in sessionModelList" ng-class="{'success':selectedIndex==$index}">
+                        <td>{{$index+1}}</td>
+                        <td>{{session.SessionDate|date:'medium'}}</td>
+                        <td>{{session.LessonPeriodName}}</td>
+                        <td>
+                            <div class="btn-group pull-right">
+                                <md-button class="md-raised md-warn" ng-click="selectSessionExam(session);selectedIndex=$index">Oturumu Seç</md-button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-card>
+    </md-content>
+</div>
+<div id="selectedClassroomList" class="animated display-hide">
+    <md-content class="md-padding">
+        <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect style="min-height: 400px">
+            <md-tab ng-repeat="exam in selectedSession.SessionExamList" label="{{exam.ClassroomName}} - {{exam.ExamName}}">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Grup Adı</th>
+                        <th>Kişi Sayısı</th>
+                        <th>Sınav Kağıdı</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="group in exam.GroupList">
+                        <td>{{$index+1}}</td>
+                        <td>{{group.GroupName}}</td>
+                        <td>{{group.Count}}</td>
+                        <td>{{group.FileName}}</td>
+                        <td>
+                            <div class="btn-group pull-right">
+                                <md-button class="md-raised md-warn" ng-click="selectGroup(group)">Gruba Sınav Kağıdı Ekle</md-button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="btn-group pull-right">
+                    <button class="btn btn-success" ng-click="test(exam)">{{exam.ClassroomName}} Sınıfında Sınava Girecekler için Sınav Kağıtlarını Oluştur</button>
+                    <button class="btn btn-warning" ng-click="readDir()">test</button>
+                </div>
+
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>
