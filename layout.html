@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset="UTF-8">
+  <title>imtihanyeri.com</title>
+
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="node_modules/toastr/build/toastr.min.css" />
+  <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" />
+</head>
+
+<body layout="column" ng-controller="appCtrl">
+  <div ui-view></div>
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+  <!--BEGIN include libs -->
+  <script src="node_modules/underscore/underscore-min.js"></script>
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="node_modules/toastr/build/toastr.min.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.js"></script>
+  <script src="node_modules/angular-material/angular-material.js"></script>
+  <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="node_modules/angular-material-data-table/dist/md-data-table.js"></script>
+  <!--END include libs -->
+  <!--BEGIN include custom scripts -->
+  <script src="content/js/app.js"></script>
+  <script src="content/js/controllers/homeCtrl.js"></script>
+  <!--END include custom scripts -->
+  <script>
+    if (window.module) module = window.module;
+  </script>
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+</body>
+
+</html>
