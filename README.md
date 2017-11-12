@@ -1,1 +1,0 @@
-# planexam-desktop-version
